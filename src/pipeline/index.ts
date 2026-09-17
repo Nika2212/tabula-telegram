@@ -1,6 +1,2 @@
-export {
-  runForever,
-  runOnce,
-  type PipelineDeps,
-  type PipelineRunSummary,
-} from './run.ts';
+export { checkForNews, type CheckSummary, type PipelineDeps } from './run.ts';
+export { selectFresh } from './select-fresh.ts';
