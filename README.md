@@ -197,3 +197,5 @@ handler already stops the run so the article is retried on the next poll.
   `.js` on build.
 - `erasableSyntaxOnly` is on, so no enums, namespaces, or parameter properties.
 - Factory functions with injected dependencies; no module-level singletons.
+#   t a b u l a - t e l e g r a m  
+ 
