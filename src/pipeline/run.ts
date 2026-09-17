@@ -60,7 +60,8 @@ export async function checkForNews(deps: PipelineDeps): Promise<CheckSummary> {
   const fresh = selectFresh(items, state, deps.maxItemsPerRun);
 
   if (fresh.length === 0) {
-    deps.logger.info('no new articles', { listed: items.length });
+    // Debug, not info: at a two-minute interval this is the usual outcome.
+    deps.logger.debug('no new articles', { listed: items.length });
     return { listed: items.length, fresh: 0, delivered: 0, firstRun };
   }
 

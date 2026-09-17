@@ -30,7 +30,6 @@ function pickThumbnail(item: RawNewsItem, $: CheerioAPI): NewsThumbnail | null {
         width: asInteger(style.orig_w),
         height: asInteger(style.orig_h),
         alt: asText(style.alt) ?? fallbackAlt,
-        caption: asText(style.caption),
       };
     }
   }
@@ -38,7 +37,7 @@ function pickThumbnail(item: RawNewsItem, $: CheerioAPI): NewsThumbnail | null {
   const ogImage = metaContent($, 'og:image');
   if (ogImage === null) return null;
 
-  return { url: ogImage, width: null, height: null, alt: fallbackAlt, caption: null };
+  return { url: ogImage, width: null, height: null, alt: fallbackAlt };
 }
 
 /**

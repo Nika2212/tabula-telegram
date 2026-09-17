@@ -6,7 +6,6 @@ export interface NewsListItem {
   readonly title: string;
   readonly createdAt: string;
   readonly url: string;
-  readonly streams: readonly string[];
   readonly thumbnailUrl: string | null;
 }
 
@@ -15,7 +14,6 @@ export interface NewsThumbnail {
   readonly width: number | null;
   readonly height: number | null;
   readonly alt: string | null;
-  readonly caption: string | null;
 }
 
 /** Everything gathered from a single article's own page. */

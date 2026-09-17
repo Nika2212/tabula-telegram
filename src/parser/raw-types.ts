@@ -13,8 +13,6 @@ export interface RawNewsListAttributes {
   readonly title?: unknown;
   readonly created?: unknown;
   readonly slug?: unknown;
-  readonly streams?: unknown;
-  readonly thumbnail_hidden?: unknown;
 }
 
 export interface RawNewsListResource {
@@ -43,8 +41,6 @@ export interface RawNewsCollection {
 export interface RawImageStyle {
   readonly href?: unknown;
   readonly alt?: unknown;
-  readonly title?: unknown;
-  readonly caption?: unknown;
   readonly orig_w?: unknown;
   readonly orig_h?: unknown;
 }

@@ -1,4 +1,4 @@
-import { asInteger, asList, asText, asTextList, asTimestamp } from '../coerce.ts';
+import { asInteger, asList, asText, asTimestamp } from '../coerce.ts';
 import { PageShapeError } from '../errors.ts';
 import type { RawNewsListResource, RawNextData } from '../raw-types.ts';
 import type { NewsListItem } from '../../types/index.ts';
@@ -42,7 +42,6 @@ function toListItem(resource: RawNewsListResource, articleBaseUrl: string): News
     title,
     createdAt,
     url: `${articleBaseUrl}/${nid}-${slug}`,
-    streams: asTextList(attributes.streams),
     thumbnailUrl: pickThumbnail(resource),
   };
 }

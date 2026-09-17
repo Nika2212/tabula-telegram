@@ -1,21 +1,28 @@
 import { load } from 'cheerio';
 
+/** Elements that should end up separated by a blank line. */
+const BLOCK_ELEMENTS = 'p, div, li, h1, h2, h3, h4, h5, h6, blockquote, figcaption, tr';
+
 /**
- * Collapses an HTML fragment into plain text. Tabula wraps body copy in deeply
- * nested `<span>` elements, so block-level tags are turned into breaks first to
- * keep sentences from running together.
+ * Collapses an HTML fragment into plain text, keeping paragraph breaks as blank
+ * lines. Tabula wraps body copy in deeply nested `<span>` elements, so the
+ * block-level tags are the only reliable paragraph boundaries.
  */
 export function htmlToText(html: string): string {
   const $ = load(`<div id="root">${html}</div>`);
-  $('#root script, #root style').remove();
-  $('#root p, #root br, #root div, #root li, #root h1, #root h2, #root h3').after('\n');
+  const root = $('#root');
 
-  return $('#root')
+  root.find('script, style').remove();
+  root.find('br').after('\n');
+  root.find(BLOCK_ELEMENTS).after('\n\n');
+
+  return root
     .text()
     .replace(/\r/g, '')
     .replace(/[ \t\u00a0]+/g, ' ')
     .replace(/ *\n */g, '\n')
-    .replace(/\n{2,}/g, '\n')
+    // Nested blocks emit extra breaks; cap the gap at one blank line.
+    .replace(/\n{3,}/g, '\n\n')
     .trim();
 }
 

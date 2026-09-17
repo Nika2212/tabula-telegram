@@ -14,7 +14,7 @@ export interface PollState {
   readonly updatedAt: string | null;
 }
 
-export const EMPTY_STATE: PollState = {
+const EMPTY_STATE: PollState = {
   lastSeenId: null,
   lastSeenNid: null,
   lastSeenCreatedAt: null,

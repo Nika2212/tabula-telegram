@@ -16,15 +16,6 @@ export function asList(value: unknown): readonly unknown[] {
   return Array.isArray(value) ? value : [];
 }
 
-export function asTextList(value: unknown): string[] {
-  const out: string[] = [];
-  for (const entry of asList(value)) {
-    const text = asText(entry);
-    if (text !== null) out.push(text);
-  }
-  return out;
-}
-
 /** Accepts an ISO 8601 timestamp and rejects anything unparseable. */
 export function asTimestamp(value: unknown): string | null {
   const text = asText(value);

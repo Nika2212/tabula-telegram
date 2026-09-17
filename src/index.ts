@@ -16,7 +16,7 @@ async function buildHandlers(
   config: ReturnType<typeof loadConfig>,
   logger: Logger,
 ): Promise<NewsHandler[]> {
-  const handlers: NewsHandler[] = [createConsoleHandler()];
+  const handlers: NewsHandler[] = [createConsoleHandler(logger.child('news'))];
 
   if (config.telegram === null) {
     logger.info('Telegram is not configured, printing to the console only');
