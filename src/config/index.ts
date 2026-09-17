@@ -90,7 +90,7 @@ export function loadConfig(env: NodeJS.ProcessEnv = process.env): AppConfig {
             minIntervalMs: readInt(env, 'TELEGRAM_MIN_INTERVAL_MS', 3_500),
             disableNotification: readBool(env, 'TELEGRAM_DISABLE_NOTIFICATION', false),
           },
-    pollIntervalMs: readInt(env, 'POLL_INTERVAL_MS', 300_000),
+    pollIntervalMs: readInt(env, 'POLL_INTERVAL_MS', 120_000),
     maxItemsPerRun: readInt(env, 'MAX_ITEMS_PER_RUN', 10),
     statePath: readString(env, 'STATE_PATH', './data/state.json'),
     logLevel: logLevelRaw,
