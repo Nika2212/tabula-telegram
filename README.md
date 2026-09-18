@@ -4,7 +4,7 @@ A small service that watches the [Tabula](https://tabula.ge) news feed and posts
 every new article to a Telegram channel.
 
 It checks for news every 2 minutes. When something new shows up it opens the
-article, takes the headline, image and text, and publishes it to the channel.
+article, takes the headline and image, and publishes it to the channel.
 Articles it has already posted are remembered, so nothing gets sent twice.
 
 ## What you need

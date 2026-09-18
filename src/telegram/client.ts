@@ -97,13 +97,25 @@ export function createTelegramClient(deps: TelegramClientDeps): TelegramClient {
     },
 
     async send(message) {
-      const preview = message.preview;
-
-      const sent = await call<RawMessage>('sendMessage', {
+      const shared = {
         chat_id: deps.config.channelId,
-        text: message.text,
         parse_mode: message.parseMode,
         disable_notification: deps.config.disableNotification,
+      };
+
+      if (message.photoUrl !== null) {
+        const sent = await call<RawMessage>('sendPhoto', {
+          ...shared,
+          photo: message.photoUrl,
+          caption: message.text,
+        });
+        return { messageId: sent.message_id, chatId: String(sent.chat.id) };
+      }
+
+      const preview = message.preview;
+      const sent = await call<RawMessage>('sendMessage', {
+        ...shared,
+        text: message.text,
         link_preview_options:
           preview === null
             ? { is_disabled: true }

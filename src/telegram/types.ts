@@ -8,10 +8,15 @@ export interface LinkPreview {
   readonly showAboveText: boolean;
 }
 
-/** A post ready for the Bot API. A null preview suppresses it entirely. */
+/**
+ * A post ready for the Bot API. With a photo it is sent as a photo message and
+ * `text` becomes the caption; otherwise as text, where `preview` supplies the
+ * image instead.
+ */
 export interface OutgoingMessage {
   readonly text: string;
   readonly parseMode: ParseMode;
+  readonly photoUrl: string | null;
   readonly preview: LinkPreview | null;
 }
 

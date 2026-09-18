@@ -22,7 +22,7 @@ export function createChannelEmitter(deps: EmitterDeps): ChannelEmitter {
       if (deps.config.dryRun) {
         deps.logger.info('dry run, not sending', {
           chars: message.text.length,
-          preview: message.preview?.url ?? '(none)',
+          photo: message.photoUrl ?? '(none)',
         });
         console.log(`\n--- telegram dry run ---\n${message.text}\n---\n`);
         return null;
